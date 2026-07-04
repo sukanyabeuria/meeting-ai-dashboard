@@ -1,5 +1,5 @@
 import Sidebar from './components/Sidebar'
-import GlowBackground from './components/GlowBackground'
+import GlassBackground from './components/GlassBackground'
 import Dashboard from './pages/Dashboard'
 import './App.css'
 

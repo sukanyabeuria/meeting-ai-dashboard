@@ -1,6 +1,6 @@
 import { Users2 } from 'lucide-react'
 import GlassCard from './GlassCard'
-import PlatformProgress from './PlatformProgress'
+import PlatformProgress from './platformProgress'
 import { platforms } from '../data/platform'
 
 export default function PlatformCard() {
