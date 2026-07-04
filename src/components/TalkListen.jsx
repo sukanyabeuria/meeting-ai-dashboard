@@ -2,49 +2,59 @@
 
 const members = [
   {
-    name: "Elina Lopez",
-    role: "Web Designer",
-    talk: 80,
-    listen: 26,
+    id: 1,
+    name: "Branden Leo",
+    role: "Product Manager",
+    talk: 78,
+    listen: 22,
     image: "https://i.pravatar.cc/100?img=15",
   },
   {
-    name: "Elina Lopez",
-    role: "Web Designer",
-    talk: 60,
-    listen: 20,
-    image: "https://i.pravatar.cc/100?img=18",
+    id: 2,
+    name: "Sophia Carter",
+    role: "UI/UX Designer",
+    talk: 62,
+    listen: 38,
+    image: "https://i.pravatar.cc/100?img=32",
   },
   {
-    name: "Elina Lopez",
-    role: "Web Designer",
-    talk: 50,
-    listen: 10,
-    image: "https://i.pravatar.cc/100?img=25",
+    id: 3,
+    name: "Daniel Smith",
+    role: "Frontend Developer",
+    talk: 55,
+    listen: 45,
+    image: "https://i.pravatar.cc/100?img=12",
   },
 ];
 
 function TalkListen() {
   return (
-    <div className="bg-[#18181B] border border-[#2A2A2A] rounded-2xl p-6 shadow-lg">
+    <div className="bg-[#18181B] border border-[#2A2A32] rounded-3xl p-6 shadow-xl">
 
       {/* Header */}
-      <div className="mb-6">
-        <h2 className="text-xl font-semibold text-white">
+
+      <div className="mb-8">
+
+        <h2 className="text-2xl font-bold text-white">
           Talk To Listen Ratio
         </h2>
 
         <p className="text-gray-400 text-sm mt-1">
-          Participants 25
+          Meeting Participation
         </p>
+
       </div>
 
       {/* Members */}
-      <div className="space-y-6">
 
-        {members.map((member, index) => (
+      <div className="space-y-7">
 
-          <div key={index} className="flex items-center gap-4">
+        {members.map((member) => (
+
+          <div
+            key={member.id}
+            className="flex items-center gap-4"
+          >
 
             <img
               src={member.image}
@@ -57,31 +67,35 @@ function TalkListen() {
               <div className="flex justify-between mb-2">
 
                 <div>
-                  <h3 className="text-white font-medium">
+
+                  <h3 className="text-white font-semibold">
                     {member.name}
                   </h3>
 
-                  <p className="text-gray-400 text-sm">
+                  <p className="text-gray-500 text-sm">
                     {member.role}
                   </p>
+
                 </div>
 
                 <div className="text-right">
-                  <p className="text-pink-400 text-sm">
+
+                  <p className="text-pink-400 font-semibold text-sm">
                     Talk {member.talk}%
                   </p>
 
                   <p className="text-gray-400 text-sm">
                     Listen {member.listen}%
                   </p>
+
                 </div>
 
               </div>
 
-              <div className="w-full h-3 bg-[#2E2E34] rounded-full overflow-hidden">
+              <div className="w-full h-3 rounded-full bg-[#2D2D35] overflow-hidden">
 
                 <div
-                  className="h-full bg-pink-500 rounded-full"
+                  className="h-full rounded-full bg-gradient-to-r from-pink-500 to-purple-500 transition-all duration-700"
                   style={{
                     width: `${member.talk}%`,
                   }}

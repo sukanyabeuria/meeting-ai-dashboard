@@ -2,55 +2,60 @@
 
 const members = [
   {
-    name: "Elina Lopez",
-    role: "Web Designer",
-    time: "40h 10m",
-    progress: 80,
-    image: "https://i.pravatar.cc/100?img=5",
+    id: 1,
+    name: "Branden Leo",
+    role: "Product Manager",
+    hours: "42h 18m",
+    progress: 90,
+    image: "https://i.pravatar.cc/100?img=15",
   },
   {
-    name: "Elina Lopez",
-    role: "Web Designer",
-    time: "40h 10m",
+    id: 2,
+    name: "Sophia Carter",
+    role: "UI/UX Designer",
+    hours: "38h 42m",
+    progress: 78,
+    image: "https://i.pravatar.cc/100?img=32",
+  },
+  {
+    id: 3,
+    name: "Daniel Smith",
+    role: "Frontend Developer",
+    hours: "35h 20m",
     progress: 70,
     image: "https://i.pravatar.cc/100?img=12",
-  },
-  {
-    name: "Elina Lopez",
-    role: "Web Designer",
-    time: "40h 10m",
-    progress: 65,
-    image: "https://i.pravatar.cc/100?img=18",
   },
 ];
 
 function TimeSpent() {
   return (
-    <div className="bg-[#18181B] border border-[#2A2A2A] rounded-2xl p-6 shadow-lg">
+    <div className="bg-[#18181B] border border-[#2A2A32] rounded-3xl p-6 shadow-xl">
 
       {/* Header */}
-      <div className="flex justify-between items-center mb-6">
+      <div className="flex justify-between items-center mb-8">
 
         <div>
-          <h2 className="text-xl font-semibold text-white">
+
+          <h2 className="text-2xl font-bold text-white">
             Time Spent In Meetings
           </h2>
 
           <p className="text-gray-400 text-sm mt-1">
-            Participants 25 • Average 10h
+            Participants • Last 30 Days
           </p>
+
         </div>
 
       </div>
 
       {/* Members */}
 
-      <div className="space-y-6">
+      <div className="space-y-7">
 
-        {members.map((member, index) => (
+        {members.map((member) => (
 
           <div
-            key={index}
+            key={member.id}
             className="flex items-center gap-4"
           >
 
@@ -62,30 +67,30 @@ function TimeSpent() {
 
             <div className="flex-1">
 
-              <div className="flex justify-between">
+              <div className="flex justify-between mb-2">
 
                 <div>
 
-                  <h3 className="text-white font-medium">
+                  <h3 className="text-white font-semibold">
                     {member.name}
                   </h3>
 
-                  <p className="text-gray-400 text-sm">
+                  <p className="text-gray-500 text-sm">
                     {member.role}
                   </p>
 
                 </div>
 
-                <span className="text-gray-300 text-sm">
-                  {member.time}
+                <span className="text-pink-400 font-semibold">
+                  {member.hours}
                 </span>
 
               </div>
 
-              <div className="w-full h-3 bg-[#2E2E34] rounded-full mt-3">
+              <div className="w-full h-3 rounded-full bg-[#2D2D35] overflow-hidden">
 
                 <div
-                  className="h-3 rounded-full bg-pink-500"
+                  className="h-full rounded-full bg-gradient-to-r from-pink-500 to-purple-500 transition-all duration-700"
                   style={{
                     width: `${member.progress}%`,
                   }}

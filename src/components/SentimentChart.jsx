@@ -5,7 +5,6 @@ import {
   Pie,
   Cell,
   ResponsiveContainer,
-  Tooltip,
 } from "recharts";
 
 const data = [
@@ -16,21 +15,23 @@ const data = [
 
 const COLORS = [
   "#ff4fd8",
-  "#ff7ac8",
-  "#4B4B57",
+  "#ff8ae6",
+  "#686B78",
 ];
 
 function SentimentChart() {
   return (
-    <div className="bg-[#18181B] border border-[#2A2A2A] rounded-2xl p-6 shadow-lg">
+    <div className="bg-[#18181B] border border-[#2A2A32] rounded-3xl p-6 shadow-xl">
 
       {/* Header */}
-      <h2 className="text-xl font-semibold text-white mb-6">
+
+      <h2 className="text-2xl font-bold text-white mb-6">
         Sentiments
       </h2>
 
-      {/* Donut Chart */}
-      <div className="relative h-60">
+      {/* Chart */}
+
+      <div className="relative h-[240px]">
 
         <ResponsiveContainer width="100%" height="100%">
 
@@ -39,40 +40,36 @@ function SentimentChart() {
             <Pie
               data={data}
               dataKey="value"
-              innerRadius={62}
-              outerRadius={88}
+              innerRadius={68}
+              outerRadius={90}
               paddingAngle={3}
               stroke="none"
             >
-              {data.map((entry, index) => (
+
+              {data.map((item, index) => (
+
                 <Cell
                   key={index}
                   fill={COLORS[index]}
                 />
-              ))}
-            </Pie>
 
-            <Tooltip
-              contentStyle={{
-                background: "#18181B",
-                border: "1px solid #333",
-                borderRadius: "12px",
-                color: "#fff",
-              }}
-            />
+              ))}
+
+            </Pie>
 
           </PieChart>
 
         </ResponsiveContainer>
 
         {/* Center Text */}
+
         <div className="absolute inset-0 flex flex-col items-center justify-center">
 
-          <span className="text-gray-400 text-sm">
+          <p className="text-gray-400 text-sm">
             Total
-          </span>
+          </p>
 
-          <h2 className="text-4xl font-bold text-white">
+          <h2 className="text-5xl font-bold text-white">
             100%
           </h2>
 
@@ -82,13 +79,13 @@ function SentimentChart() {
 
       {/* Legend */}
 
-      <div className="mt-6 space-y-4">
+      <div className="mt-8 space-y-4">
 
         {data.map((item, index) => (
 
           <div
             key={index}
-            className="flex items-center justify-between"
+            className="flex justify-between items-center"
           >
 
             <div className="flex items-center gap-3">
@@ -106,7 +103,7 @@ function SentimentChart() {
 
             </div>
 
-            <span className="text-white font-medium">
+            <span className="text-white font-semibold">
               {item.value}%
             </span>
 

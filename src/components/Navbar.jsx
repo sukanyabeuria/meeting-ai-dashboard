@@ -1,65 +1,92 @@
-import { FaSearch, FaBell, FaSlidersH, FaChevronDown } from "react-icons/fa";
+// src/components/Navbar.jsx
+
+import {
+  FaSearch,
+  FaBell,
+  FaSlidersH,
+  FaChevronDown,
+} from "react-icons/fa";
 
 function Navbar() {
   return (
-    <div className="flex items-center justify-between mb-8">
+    <header className="flex items-center justify-between">
 
       {/* Search */}
-      <div className="relative w-[420px]">
-        <FaSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500" />
+      <div className="relative w-[520px]">
+
+        <FaSearch
+          className="absolute left-5 top-1/2 -translate-y-1/2 text-gray-500"
+        />
 
         <input
           type="text"
           placeholder="Find any discussion point..."
-          className="w-full bg-[#18181B] text-white rounded-xl py-3 pl-12 pr-4 outline-none border border-gray-800 focus:border-pink-500 transition"
+          className="w-full h-14 bg-[#18181B] border border-[#2B2B31] rounded-2xl pl-14 pr-5 text-white placeholder:text-gray-500 focus:outline-none focus:border-pink-500 transition-all"
         />
+
       </div>
 
-      {/* Right Side */}
+      {/* Right */}
+
       <div className="flex items-center gap-4">
 
-        {/* Filters */}
-        <button className="flex items-center gap-2 px-5 py-3 rounded-xl bg-[#18181B] hover:bg-[#202024] transition">
+        {/* Filter */}
+
+        <button className="flex items-center gap-2 h-14 px-5 rounded-2xl bg-[#18181B] border border-[#2B2B31] hover:border-pink-500 transition">
+
           <FaSlidersH />
-          Filters
+
+          <span>Filters</span>
+
           <FaChevronDown className="text-xs" />
+
         </button>
 
         {/* Month */}
-        <button className="flex items-center gap-2 px-5 py-3 rounded-xl bg-[#18181B] hover:bg-[#202024] transition">
-          This Month
+
+        <button className="flex items-center gap-2 h-14 px-5 rounded-2xl bg-[#18181B] border border-[#2B2B31] hover:border-pink-500 transition">
+
+          <span>This Month</span>
+
           <FaChevronDown className="text-xs" />
+
         </button>
 
         {/* Notification */}
-        <button className="w-12 h-12 rounded-xl bg-[#18181B] flex items-center justify-center hover:bg-[#202024] transition">
+
+        <button className="w-14 h-14 rounded-2xl bg-[#18181B] border border-[#2B2B31] flex items-center justify-center hover:border-pink-500 transition">
+
           <FaBell />
+
         </button>
 
         {/* Profile */}
-        <div className="flex items-center gap-3 bg-[#18181B] px-3 py-2 rounded-xl">
+
+        <div className="flex items-center gap-3 bg-[#18181B] border border-[#2B2B31] rounded-2xl px-4 py-2">
 
           <img
-            src="https://i.pravatar.cc/100?img=12"
+            src="https://i.pravatar.cc/100?img=15"
             alt="profile"
-            className="w-10 h-10 rounded-full"
+            className="w-11 h-11 rounded-full"
           />
 
           <div>
-            <h3 className="font-semibold text-sm">
+
+            <h3 className="text-white font-semibold text-sm">
               Branden Leo
             </h3>
 
             <p className="text-xs text-gray-400">
               branden@email.com
             </p>
+
           </div>
 
         </div>
 
       </div>
 
-    </div>
+    </header>
   );
 }
 

@@ -1,5 +1,3 @@
-// src/pages/Dashboard.jsx
-
 import Sidebar from "../components/Sidebar";
 import Navbar from "../components/Navbar";
 import StatCard from "../components/StatCard";
@@ -11,67 +9,70 @@ import TalkListen from "../components/TalkListen";
 
 function Dashboard() {
   return (
-    <div className="flex min-h-screen bg-[#09090B] text-white">
-
+    <div className="flex h-screen bg-[#07070B] text-white overflow-hidden">
       {/* Sidebar */}
       <Sidebar />
 
-      {/* Main Content */}
-      <main className="flex-1 overflow-y-auto p-8">
+      {/* Main */}
+      <main className="flex-1 px-6 py-5 overflow-hidden">
 
-        {/* Navbar */}
         <Navbar />
 
-        {/* Page Title */}
-        <div className="mt-8 mb-6">
-          <h1 className="text-4xl font-bold">Analytics Dashboard</h1>
-          <p className="text-gray-400 mt-2">
+        {/* Heading */}
+        <div className="mt-5 mb-5">
+          <h1 className="text-[46px] font-bold leading-none">
+            Analytics Dashboard
+          </h1>
+
+          <p className="text-gray-400 mt-2 text-[15px]">
             Monitor meetings, team activity and AI insights.
           </p>
         </div>
 
-        {/* Top Cards */}
-        <div className="grid grid-cols-2 gap-6 mb-6">
+        {/* Grid */}
+        <div className="grid grid-cols-12 gap-4 h-[calc(100vh-165px)]">
 
-          <StatCard
-            title="Total Meetings"
-            value="352"
-            change="+12%"
-          />
+          {/* Left */}
+          <div className="col-span-8 flex flex-col gap-4">
 
-          <StatCard
-            title="Avg. Meeting Hours"
-            value="128h"
-            change="+8%"
-          />
+            <div className="rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10 shadow-[0_0_60px_rgba(217,70,239,0.08)]">
+              <StatCard />
+            </div>
 
-        </div>
+            <div className="flex-1 rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10 shadow-[0_0_60px_rgba(217,70,239,0.08)]">
+              <AnalyticsChart />
+            </div>
 
-        {/* Middle Section */}
-        <div className="grid grid-cols-12 gap-6 mb-6">
+            <div className="grid grid-cols-2 gap-4">
 
-          <div className="col-span-8">
-            <AnalyticsChart />
+              <div className="rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10 shadow-[0_0_60px_rgba(217,70,239,0.08)]">
+                <TimeSpent />
+              </div>
+
+              <div className="rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10 shadow-[0_0_60px_rgba(217,70,239,0.08)]">
+                <TalkListen />
+              </div>
+
+            </div>
+
           </div>
 
-          <div className="col-span-4 space-y-6">
-            <PlatformCard />
-            <SentimentChart />
+          {/* Right */}
+          <div className="col-span-4 flex flex-col gap-4">
+
+            <div className="rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10 shadow-[0_0_60px_rgba(217,70,239,0.08)]">
+              <PlatformCard />
+            </div>
+
+            <div className="rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10 shadow-[0_0_60px_rgba(217,70,239,0.08)]">
+              <SentimentChart />
+            </div>
+
           </div>
-
-        </div>
-
-        {/* Bottom Section */}
-        <div className="grid grid-cols-2 gap-6">
-
-          <TimeSpent />
-
-          <TalkListen />
 
         </div>
 
       </main>
-
     </div>
   );
 }
