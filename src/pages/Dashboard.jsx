@@ -1,80 +1,45 @@
-import Sidebar from "../components/Sidebar";
-import Navbar from "../components/Navbar";
-import StatCard from "../components/StatCard";
-import AnalyticsChart from "../components/AnalyticsChart";
-import PlatformCard from "../components/PlatformCard";
-import SentimentChart from "../components/SentimentChart";
-import TimeSpent from "../components/TimeSpent";
-import TalkListen from "../components/TalkListen";
+import { Filter, Calendar, Share2 } from 'lucide-react'
+import Navbar from '../components/Navbar'
+import AnalyticsChart from '../components/AnalyticsChart'
+import PlatformCard from '../components/PlatformCard'
+import SentimentChart from '../components/SentimentChart'
+import TimeSpent from '../components/TimeSpent'
+import TalkListen from '../components/TalkListen'
 
-function Dashboard() {
+export default function Dashboard() {
   return (
-    <div className="flex h-screen bg-[#07070B] text-white overflow-hidden">
-      {/* Sidebar */}
-      <Sidebar />
+    <main className="flex-1 p-8 overflow-y-auto">
+      <Navbar />
 
-      {/* Main */}
-      <main className="flex-1 px-6 py-5 overflow-hidden">
-
-        <Navbar />
-
-        {/* Heading */}
-        <div className="mt-5 mb-5">
-          <h1 className="text-[46px] font-bold leading-none">
-            Analytics Dashboard
-          </h1>
-
-          <p className="text-gray-400 mt-2 text-[15px]">
-            Monitor meetings, team activity and AI insights.
-          </p>
+      <div className="flex items-center justify-between mb-6">
+        <h1 className="text-2xl font-bold">Analytics</h1>
+        <div className="flex items-center gap-3">
+          <button className="flex items-center gap-2 text-sm bg-bg-panel border border-border-soft rounded-lg px-4 py-2">
+            <Filter size={14} />
+            Filters
+          </button>
+          <button className="flex items-center gap-2 text-sm bg-bg-panel border border-border-soft rounded-lg px-4 py-2">
+            <Calendar size={14} />
+            This month
+          </button>
+          <button className="w-9 h-9 flex items-center justify-center bg-bg-panel border border-border-soft rounded-lg">
+            <Share2 size={14} />
+          </button>
         </div>
+      </div>
 
-        {/* Grid */}
-        <div className="grid grid-cols-12 gap-4 h-[calc(100vh-165px)]">
-
-          {/* Left */}
-          <div className="col-span-8 flex flex-col gap-4">
-
-            <div className="rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10 shadow-[0_0_60px_rgba(217,70,239,0.08)]">
-              <StatCard />
-            </div>
-
-            <div className="flex-1 rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10 shadow-[0_0_60px_rgba(217,70,239,0.08)]">
-              <AnalyticsChart />
-            </div>
-
-            <div className="grid grid-cols-2 gap-4">
-
-              <div className="rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10 shadow-[0_0_60px_rgba(217,70,239,0.08)]">
-                <TimeSpent />
-              </div>
-
-              <div className="rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10 shadow-[0_0_60px_rgba(217,70,239,0.08)]">
-                <TalkListen />
-              </div>
-
-            </div>
-
-          </div>
-
-          {/* Right */}
-          <div className="col-span-4 flex flex-col gap-4">
-
-            <div className="rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10 shadow-[0_0_60px_rgba(217,70,239,0.08)]">
-              <PlatformCard />
-            </div>
-
-            <div className="rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10 shadow-[0_0_60px_rgba(217,70,239,0.08)]">
-              <SentimentChart />
-            </div>
-
-          </div>
-
+      <div className="grid grid-cols-3 gap-6 mb-6">
+        <AnalyticsChart />
+        <div className="flex flex-col gap-6">
+          <PlatformCard />
+          <SentimentChart />
         </div>
+      </div>
 
-      </main>
-    </div>
-  );
+      <div className="grid grid-cols-2 gap-6">
+        <TimeSpent />
+        <TalkListen />
+      </div>
+    </main>
+  )
 }
-
-export default Dashboard;

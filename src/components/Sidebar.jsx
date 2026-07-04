@@ -1,118 +1,73 @@
 import {
-  FaHome,
-  FaVideo,
-  FaRegStickyNote,
-  FaTasks,
-  FaTags,
-  FaUsers,
-  FaPlug,
-  FaCog,
-  FaChartPie,
-} from "react-icons/fa";
+  Home,
+  Video,
+  FileText,
+  ListChecks,
+  Tag,
+  PieChart,
+  Users,
+  Plug,
+  Settings,
+} from 'lucide-react'
 
-const menu = [
-  { title: "Home", icon: <FaHome /> },
-  { title: "Meetings", icon: <FaVideo /> },
-  { title: "Snippets", icon: <FaRegStickyNote /> },
-  { title: "Action Items", icon: <FaTasks /> },
-  { title: "AI Tags", icon: <FaTags /> },
-];
+const mainLinks = [
+  { icon: Home, label: 'Home' },
+  { icon: Video, label: 'Meetings' },
+  { icon: FileText, label: 'Snippets' },
+  { icon: ListChecks, label: 'Action Items' },
+  { icon: Tag, label: 'AI Tags' },
+  { icon: PieChart, label: 'Analytics', active: true },
+]
 
-const workspace = [
-  { title: "Members", icon: <FaUsers /> },
-  { title: "Integrations", icon: <FaPlug /> },
-  { title: "Settings", icon: <FaCog /> },
-];
+const workstationLinks = [
+  { icon: Users, label: 'Members' },
+  { icon: Plug, label: 'Integrations' },
+  { icon: Settings, label: 'Settings' },
+]
 
-function Sidebar() {
+function NavItem({ icon: Icon, label, active }) {
   return (
-    <aside className="w-[280px] h-screen bg-[#0b0812] border-r border-white/5 px-6 py-8 flex flex-col justify-between">
-
-      <div>
-
-        {/* Logo */}
-
-        <div className="flex items-center gap-4 mb-12">
-
-          <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-pink-500 via-fuchsia-500 to-purple-600 flex items-center justify-center text-3xl shadow-[0_0_30px_rgba(255,60,210,.45)]">
-            🤖
-          </div>
-
-          <div>
-            <h1 className="text-3xl font-extrabold tracking-tight">
-              Meet <span className="text-pink-400">AI</span>
-            </h1>
-
-            <p className="text-xs text-gray-500">
-              Meeting Analytics
-            </p>
-          </div>
-
-        </div>
-
-        {/* Main Menu */}
-
-        <p className="text-[11px] uppercase tracking-[3px] text-gray-500 mb-5">
-          Main Menu
-        </p>
-
-        <div className="space-y-2">
-
-          {menu.map((item) => (
-            <button
-              key={item.title}
-              className="w-full flex items-center gap-4 rounded-2xl px-4 py-3 text-gray-400 hover:bg-white/5 hover:text-white transition-all duration-300"
-            >
-              <span className="text-lg">{item.icon}</span>
-              <span>{item.title}</span>
-            </button>
-          ))}
-
-          <button
-            className="w-full flex items-center gap-4 rounded-2xl px-4 py-3 font-semibold text-black bg-gradient-to-r from-pink-300 via-pink-400 to-fuchsia-500 shadow-[0_0_35px_rgba(255,70,220,.45)]"
-          >
-            <FaChartPie className="text-lg" />
-            Analytics
-          </button>
-
-        </div>
-
-        <div className="border-t border-white/5 my-8"></div>
-
-        {/* Workspace */}
-
-        <p className="text-[11px] uppercase tracking-[3px] text-gray-500 mb-5">
-          Workspace
-        </p>
-
-        <div className="space-y-2">
-
-          {workspace.map((item) => (
-            <button
-              key={item.title}
-              className="w-full flex items-center gap-4 rounded-2xl px-4 py-3 text-gray-400 hover:bg-white/5 hover:text-white transition-all duration-300"
-            >
-              <span className="text-lg">{item.icon}</span>
-              <span>{item.title}</span>
-            </button>
-          ))}
-
-        </div>
-
-      </div>
-
-      <div className="border-t border-white/5 pt-6">
-        <p className="text-sm text-gray-400">
-          Meet AI Dashboard
-        </p>
-
-        <p className="text-xs text-gray-600 mt-1">
-          Version 1.0
-        </p>
-      </div>
-
-    </aside>
-  );
+    <button
+      className={`w-full flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium transition-colors
+      ${active
+          ? 'bg-gradient-to-r from-pink-accent to-fuchsia-600 text-white shadow-glow'
+          : 'text-white/50 hover:text-white/90 hover:bg-white/5'
+        }`}
+    >
+      <Icon size={18} strokeWidth={2} />
+      <span>{label}</span>
+    </button>
+  )
 }
 
-export default Sidebar;
+export default function Sidebar() {
+  return (
+    <aside className="w-64 shrink-0 h-full flex flex-col justify-between px-4 py-6">
+      <div>
+        <div className="flex items-center gap-2 px-3 mb-8">
+          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-pink-accent to-fuchsia-600 flex items-center justify-center text-sm font-bold">
+            M
+          </div>
+          <span className="font-semibold text-lg">
+            Meet <span className="text-pink-accent">AI</span>
+          </span>
+        </div>
+
+        <nav className="flex flex-col gap-1">
+          {mainLinks.map((link) => (
+            <NavItem key={link.label} {...link} />
+          ))}
+        </nav>
+
+        <p className="text-xs uppercase tracking-wider text-white/30 mt-8 mb-2 px-4">
+          Workstation
+        </p>
+        <nav className="flex flex-col gap-1">
+          {workstationLinks.map((link) => (
+            <NavItem key={link.label} {...link} />
+          ))}
+        </nav>
+      </div>
+    </aside>
+  )
+}

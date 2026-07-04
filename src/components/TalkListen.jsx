@@ -1,118 +1,39 @@
-// src/components/TalkListen.jsx
+import { Mic } from 'lucide-react'
+import GlassCard from './GlassCard'
+import MemberCard from './MemberCard'
+import { talkListenMembers } from '../data/members'
 
-const members = [
-  {
-    id: 1,
-    name: "Branden Leo",
-    role: "Product Manager",
-    talk: 78,
-    listen: 22,
-    image: "https://i.pravatar.cc/100?img=15",
-  },
-  {
-    id: 2,
-    name: "Sophia Carter",
-    role: "UI/UX Designer",
-    talk: 62,
-    listen: 38,
-    image: "https://i.pravatar.cc/100?img=32",
-  },
-  {
-    id: 3,
-    name: "Daniel Smith",
-    role: "Frontend Developer",
-    talk: 55,
-    listen: 45,
-    image: "https://i.pravatar.cc/100?img=12",
-  },
-];
-
-function TalkListen() {
+export default function TalkListen() {
   return (
-    <div className="bg-[#18181B] border border-[#2A2A32] rounded-3xl p-6 shadow-xl">
-
-      {/* Header */}
-
-      <div className="mb-8">
-
-        <h2 className="text-2xl font-bold text-white">
-          Talk To Listen Ratio
-        </h2>
-
-        <p className="text-gray-400 text-sm mt-1">
-          Meeting Participation
-        </p>
-
+    <GlassCard>
+      <div className="flex items-center gap-2 mb-5">
+        <Mic size={16} className="text-pink-accent" />
+        <h3 className="font-semibold">Talk To Listen Ratio</h3>
       </div>
 
-      {/* Members */}
+      <div className="flex items-center text-xs text-white/40 mb-3 px-1">
+        <span className="w-40">Participants 25</span>
+        <span className="flex-1">Talk %</span>
+        <span className="w-16 text-right">Listen %</span>
+      </div>
 
-      <div className="space-y-7">
-
-        {members.map((member) => (
-
-          <div
-            key={member.id}
-            className="flex items-center gap-4"
-          >
-
-            <img
-              src={member.image}
-              alt={member.name}
-              className="w-12 h-12 rounded-full"
-            />
-
-            <div className="flex-1">
-
-              <div className="flex justify-between mb-2">
-
-                <div>
-
-                  <h3 className="text-white font-semibold">
-                    {member.name}
-                  </h3>
-
-                  <p className="text-gray-500 text-sm">
-                    {member.role}
-                  </p>
-
-                </div>
-
-                <div className="text-right">
-
-                  <p className="text-pink-400 font-semibold text-sm">
-                    Talk {member.talk}%
-                  </p>
-
-                  <p className="text-gray-400 text-sm">
-                    Listen {member.listen}%
-                  </p>
-
-                </div>
-
-              </div>
-
-              <div className="w-full h-3 rounded-full bg-[#2D2D35] overflow-hidden">
-
+      <div className="flex flex-col gap-4">
+        {talkListenMembers.map((m) => (
+          <div key={m.id} className="flex items-center gap-3">
+            <MemberCard avatar={m.avatar} name={m.name} role={m.role} />
+            <div className="flex-1 flex items-center gap-2">
+              <div className="flex-1 h-1.5 rounded-full bg-white/5 overflow-hidden">
                 <div
-                  className="h-full rounded-full bg-gradient-to-r from-pink-500 to-purple-500 transition-all duration-700"
-                  style={{
-                    width: `${member.talk}%`,
-                  }}
+                  className="h-full rounded-full bg-pink-accent"
+                  style={{ width: `${m.talk}%` }}
                 />
-
               </div>
-
+              <span className="text-xs text-white/50 w-8">{m.talk}%</span>
             </div>
-
+            <span className="text-sm text-white/60 w-10 text-right">{m.listen}%</span>
           </div>
-
         ))}
-
       </div>
-
-    </div>
-  );
+    </GlassCard>
+  )
 }
-
-export default TalkListen;

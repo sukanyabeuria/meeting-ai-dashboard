@@ -1,93 +1,35 @@
-// src/components/Navbar.jsx
+import { Search, Bell } from 'lucide-react'
 
-import {
-  FaSearch,
-  FaBell,
-  FaSlidersH,
-  FaChevronDown,
-} from "react-icons/fa";
-
-function Navbar() {
+export default function Navbar() {
   return (
-    <header className="flex items-center justify-between">
-
-      {/* Search */}
-      <div className="relative w-[520px]">
-
-        <FaSearch
-          className="absolute left-5 top-1/2 -translate-y-1/2 text-gray-500"
-        />
-
+    <div className="flex items-center justify-between mb-8">
+      <div className="flex items-center gap-2 bg-bg-panel border border-border-soft rounded-xl px-4 py-2.5 w-80">
+        <Search size={16} className="text-white/40" />
         <input
           type="text"
           placeholder="Find any discussion point..."
-          className="w-full h-14 bg-[#18181B] border border-[#2B2B31] rounded-2xl pl-14 pr-5 text-white placeholder:text-gray-500 focus:outline-none focus:border-pink-500 transition-all"
+          className="bg-transparent outline-none text-sm placeholder:text-white/40 w-full"
         />
-
       </div>
-
-      {/* Right */}
 
       <div className="flex items-center gap-4">
-
-        {/* Filter */}
-
-        <button className="flex items-center gap-2 h-14 px-5 rounded-2xl bg-[#18181B] border border-[#2B2B31] hover:border-pink-500 transition">
-
-          <FaSlidersH />
-
-          <span>Filters</span>
-
-          <FaChevronDown className="text-xs" />
-
+        <button className="w-10 h-10 rounded-full bg-bg-panel border border-border-soft flex items-center justify-center relative">
+          <Bell size={16} className="text-white/70" />
+          <span className="absolute top-2 right-2.5 w-1.5 h-1.5 rounded-full bg-pink-accent" />
         </button>
 
-        {/* Month */}
-
-        <button className="flex items-center gap-2 h-14 px-5 rounded-2xl bg-[#18181B] border border-[#2B2B31] hover:border-pink-500 transition">
-
-          <span>This Month</span>
-
-          <FaChevronDown className="text-xs" />
-
-        </button>
-
-        {/* Notification */}
-
-        <button className="w-14 h-14 rounded-2xl bg-[#18181B] border border-[#2B2B31] flex items-center justify-center hover:border-pink-500 transition">
-
-          <FaBell />
-
-        </button>
-
-        {/* Profile */}
-
-        <div className="flex items-center gap-3 bg-[#18181B] border border-[#2B2B31] rounded-2xl px-4 py-2">
-
+        <div className="flex items-center gap-3 bg-bg-panel border border-border-soft rounded-xl px-3 py-1.5">
           <img
-            src="https://i.pravatar.cc/100?img=15"
-            alt="profile"
-            className="w-11 h-11 rounded-full"
+            src="https://i.pravatar.cc/64?img=12"
+            alt="Branden Lee"
+            className="w-9 h-9 rounded-full object-cover"
           />
-
-          <div>
-
-            <h3 className="text-white font-semibold text-sm">
-              Branden Leo
-            </h3>
-
-            <p className="text-xs text-gray-400">
-              branden@email.com
-            </p>
-
+          <div className="leading-tight">
+            <p className="text-sm font-medium">Branden Lee</p>
+            <p className="text-xs text-white/40">brande@gmail.com</p>
           </div>
-
         </div>
-
       </div>
-
-    </header>
-  );
+    </div>
+  )
 }
-
-export default Navbar;
